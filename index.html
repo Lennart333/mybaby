@@ -2,17 +2,16 @@
 Primeiro, o usuário quer um website mais complexo e completo. O texto deve estar escrito sobre uma folha velha antiga com estilo gótico vampírico, e a borda do site deve ser dark vampírica.
 
 
-## Designing Website Style
-- The user wants a more complex and comprehensive website with a gothic vampiric theme.
-- The text should appear on an old, aged paper background, enhancing the dark, vampiric aesthetic.
-- Website borders must reflect a dark vampiric style, complementing the overall theme.
+## Designing Website Aesthetic  
+- The user requests a more complex and complete website with a gothic vampire theme.  
+- The design should feature text on an aged, old parchment style, with dark vampiric borders.
 </think>```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Diário Perdido do Conde Drácula - Website Completo e Complexo</title>
+    <title>O Diário Perdido do Conde Drácula - Website Completo e Vampírico</title>
     <style>
         /* Reset e Base */
         * {
@@ -27,16 +26,16 @@ Primeiro, o usuário quer um website mais complexo e completo. O texto deve esta
             line-height: 1.6;
             overflow-x: hidden;
             border: 20px solid #8b0000;
-            border-image: linear-gradient(45deg, #8b0000, #4b0000, #000000) 1;
-            box-sizing: border-box;
+            box-shadow: inset 0 0 100px rgba(139, 0, 0, 0.5), 0 0 50px rgba(139, 0, 0, 0.8);
+            position: relative;
         }
         body::before {
             content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
             background: url('https://i.imgur.com/4Z8wX9L.png') repeat;
             opacity: 0.1;
             z-index: -1;
@@ -61,6 +60,45 @@ Primeiro, o usuário quer um website mais complexo e completo. O texto deve esta
             filter: sepia(100%) contrast(1.2) brightness(0.8);
             pointer-events: none;
         }
+        /* Folha Antiga para Texto */
+        .old-paper {
+            background: url('https://i.imgur.com/4Z8wX9L.png') no-repeat center center;
+            background-size: cover;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 800px;
+            border: 2px solid #8b4513;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.5);
+            position: relative;
+            filter: sepia(80%) contrast(1.1) brightness(0.9);
+            color: #2c1810;
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        }
+        .old-paper::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            pointer-events: none;
+        }
+        .old-paper p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+        .old-paper .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #8b0000;
+        }
         /* Header */
         header {
             position: fixed;
@@ -70,8 +108,7 @@ Primeiro, o usuário quer um website mais complexo e completo. O texto deve esta
             padding: 10px 20px;
             z-index: 1000;
             border-bottom: 2px solid #8b4513;
-            border-left: 5px solid #8b0000;
-            border-right: 5px solid #8b0000;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
         }
         nav {
             max-width: 1200px;
@@ -123,35 +160,6 @@ Primeiro, o usuário quer um website mais complexo e completo. O texto deve esta
             font-size: 1.2em;
             text-indent: 20px;
             margin-bottom: 15px;
-        }
-        /* Folha Velha para Texto */
-        .old-paper {
-            background: url('https://i.imgur.com/4Z8wX9L.png') no-repeat center center;
-            background-size: cover;
-            padding: 30px;
-            border: 1px solid #8b4513;
-            border-radius: 5px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-            color: #2c1810;
-            font-family: 'Courier New', monospace;
-            font-size: 1.1em;
-            line-height: 1.8;
-            position: relative;
-        }
-        .old-paper::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            background: rgba(255,255,255,0.1);
-            border: 1px dashed #d4af37;
-            pointer-events: none;
-        }
-        .old-paper p {
-            color: #2c1810;
-            text-shadow: none;
         }
         /* Galeria */
         .gallery {
@@ -219,8 +227,7 @@ Primeiro, o usuário quer um website mais complexo e completo. O texto deve esta
             background: rgba(0,0,0,0.9);
             color: #d4af37;
             border-top: 2px solid #8b4513;
-            border-left: 5px solid #8b0000;
-            border-right: 5px solid #8b0000;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
         }
         /* Animações */
         @keyframes fadeIn {
@@ -270,6 +277,9 @@ Primeiro, o usuário quer um website mais complexo e completo. O texto deve esta
             }
             .gallery {
                 grid-template-columns: 1fr;
+            }
+            body {
+                border: 10px solid #8b0000;
             }
         }
         /* Mais Estilos para Expandir */
@@ -628,28 +638,4 @@ Primeiro, o usuário quer um website mais complexo e completo. O texto deve esta
             grid-template-columns: repeat(2, 1fr);
         }
         .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-        .grid-cols-4 {
-            grid-template-columns: repeat(4, 1fr);
-        }
-        .grid-rows-1 {
-            grid-template-rows: repeat(1, 1fr);
-        }
-        .grid-rows-2 {
-            grid-template-rows: repeat(2, 1fr);
-        }
-        .grid-gap-10 {
-            gap: 10px;
-        }
-        .grid-gap-20 {
-            gap: 20px;
-        }
-        .text-left {
-            text-align: left;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .text-right {
-           
+            grid-template-columns: repeat(3, 1
