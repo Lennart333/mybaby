@@ -1,504 +1,136 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacto Eterno</title>
+    <title>Carta Antiga do Conde Drácula</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel+Decorative:wght@700&display=swap');
-        
-        :root {
-            --blood-red: #8b0000;
-            --dark-crimson: #6b0000;
-            --obsidian: #0a0a0a;
-            --parchment: #f5e6ca;
-            --gold: #ffd700;
-        }
-        
         body {
+            font-family: 'Times New Roman', serif;
+            background: linear-gradient(to bottom, #2c1810, #1a0f0a);
+            color: #d4af37;
             margin: 0;
             padding: 0;
-            background-color: var(--obsidian);
-            color: var(--parchment);
-            font-family: 'MedievalSharp', cursive;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(139, 0, 0, 0.1) 0%, transparent 50%);
-            background-attachment: fixed;
-            cursor: url('https://placehold.co/32x32/8B0000/FFFFFF?text=⚔'), auto;
         }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
+        .page {
+            background: url('https://i.imgur.com/4Z8wX9L.png') no-repeat center center;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 50px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
             position: relative;
         }
-        
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        h1 {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 3rem;
-            color: var(--blood-red);
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-            letter-spacing: 0.2rem;
-            margin-bottom: 0.5rem;
-            animation: pulse 3s infinite;
-        }
-        
-        .subtitle {
-            font-style: italic;
-            color: var(--gold);
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-        }
-        
-        .pact-container {
-            background-color: rgba(0, 0, 0, 0.7);
-            border: 2px solid var(--blood-red);
-            border-radius: 5px;
-            padding: 2rem;
-            box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
-            position: relative;
-            margin-bottom: 3rem;
-            transition: all 0.3s ease;
-        }
-        
-        .pact-container:hover {
-            box-shadow: 0 0 50px rgba(139, 0, 0, 0.8);
-        }
-        
-        .pact-content {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        
-        .scroll-decoration {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            opacity: 0.3;
-        }
-        
-        .top-left {
-            top: 10px;
-            left: 10px;
-        }
-        
-        .top-right {
-            top: 10px;
-            right: 10px;
-            transform: rotate(90deg);
-        }
-        
-        .bottom-left {
-            bottom: 10px;
-            left: 10px;
-            transform: rotate(270deg);
-        }
-        
-        .bottom-right {
-            bottom: 10px;
-            right: 10px;
-            transform: rotate(180deg);
-        }
-        
-        .signature-section {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .signature-box {
-            width: 45%;
-            min-width: 300px;
-            margin-bottom: 2rem;
-        }
-        
-        .signature-line {
-            border-bottom: 1px solid var(--blood-red);
-            margin-top: 50px;
-            position: relative;
-        }
-        
-        .signature-label {
-            position: absolute;
-            top: -20px;
-            left: 0;
-            font-style: italic;
-            color: var(--gold);
-        }
-        
-        .signature-box:last-child {
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        
-        button {
-            background-color: var(--blood-red);
-            color: var(--parchment);
-            border: none;
-            padding: 1rem 2rem;
-            font-family: 'MedievalSharp', cursive;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 2rem auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        button:hover {
-            background-color: var(--dark-crimson);
-            box-shadow: 0 0 15px var(--blood-red);
-        }
-        
-        button::after {
+        .page::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent,
-                transparent,
-                transparent,
-                var(--gold),
-                transparent,
-                transparent,
-                transparent
-            );
-            transform: rotate(30deg);
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-        
-        button:hover::after {
-            animation: shine 1.5s ease;
-        }
-        
-        .blood-drop {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--blood-red);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-        }
-        
-        .pentagram {
-            width: 200px;
-            height: 200px;
-            margin: 2rem auto;
-            position: relative;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        
-        .pentagram svg {
-            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            fill: none;
-            stroke: var(--blood-red);
-            stroke-width: 2;
-            animation: rotate 20s linear infinite;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        
-        .modal-content {
-            background-color: var(--obsidian);
-            padding: 2rem;
-            border: 2px solid var(--gold);
-            max-width: 600px;
-            text-align: center;
-            position: relative;
-            transform: scale(0.5);
-            transition: all 0.5s ease;
-        }
-        
-        .modal.active {
-            display: flex;
-            opacity: 1;
-        }
-        
-        .modal.active .modal-content {
-            transform: scale(1);
-        }
-        
-        .flames {
-            position: absolute;
-            width: 100%;
-            height: 100px;
+            right: 0;
             bottom: 0;
-            left: 0;
-            z-index: -1;
+            background: rgba(139, 69, 19, 0.3);
+            filter: sepia(100%) contrast(1.2) brightness(0.8);
+            pointer-events: none;
         }
-        
-        .flame {
+        .letter {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(0,0,0,0.7);
+            border: 2px solid #8b4513;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        .letter h1 {
+            text-align: center;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+        }
+        .letter p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-indent: 20px;
+            margin-bottom: 15px;
+        }
+        .letter .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        .wax-seal {
             position: absolute;
+            bottom: 20px;
+            right: 20px;
             width: 50px;
-            height: 100px;
-            background: radial-gradient(ellipse at center, var(--blood-red) 0%, rgba(139,0,0,0) 70%);
+            height: 50px;
+            background: radial-gradient(circle, #8b0000, #4b0000);
             border-radius: 50%;
-            animation: flicker 2s ease-in-out infinite alternate;
-            filter: blur(5px);
-            opacity: 0.7;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.8);
         }
-        
-        @keyframes pulse {
-            0% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
-            100% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+        .wax-seal::after {
+            content: '🦇';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
         }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .mystic-element {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            background: url('https://i.imgur.com/2Z8wX9L.png') no-repeat center;
+            opacity: 0.5;
+            animation: float 3s ease-in-out infinite;
         }
-        
-        @keyframes shine {
-            0% { opacity: 0; top: -100%; left: -100%; }
-            50% { opacity: 1; top: 100%; left: 100%; }
-            100% { opacity: 0; top: -100%; left: -100%; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-        
-        @keyframes flicker {
-            0%, 100% { height: 100px; opacity: 0.7; }
-            25% { height: 90px; opacity: 0.8; }
-            50% { height: 110px; opacity: 0.5; }
-            75% { height: 95px; opacity: 0.9; }
+        .scroll {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: #d4af37;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
         }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .pact-container {
-                padding: 1rem;
-            }
-            
-            .signature-box {
-                width: 100%;
-                min-width: auto;
-            }
-        }
-        
-        /* Animação de sangue */
-        @keyframes bloodDrip {
-            0% { transform: translateY(-10px); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(50px); opacity: 0; }
+        .scroll:hover {
+            background: rgba(139, 69, 19, 0.8);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>PACTO ETERNO</h1>
-            <div class="subtitle">Pactum Aeternum Amoris</div>
-            <div class="pentagram">
-                <svg viewBox="0 0 100 100">
-                    <path d="M50,5 L84.5,35 L70.5,78.5 L29.5,78.5 L15.5,35 Z M50,45 L62.5,35 L50,25 L37.5,35 Z" />
-                </svg>
+    <div class="page">
+        <div class="mystic-element"></div>
+        <div class="letter">
+            <h1>A Carta Perdida do Conde Drácula</h1>
+            <p>Em noites de luar prateado, quando as sombras dançam como fantasmas antigos, eu, o Conde Drácula, escrevo esta missiva do meu castelo sombrio nas montanhas da Transilvânia. O ar está carregado de mistério, e o vento sussurra segredos esquecidos pelos séculos.</p>
+            <p>Lembro-me das eras passadas, quando o sangue corria como vinho nas veias dos mortais. Minha existência é uma maldição eterna, um elo entre o mundo dos vivos e o reino dos mortos. Os lobos uivam à minha porta, e os corvos voam em círculos, anunciando minha presença imortal.</p>
+            <p>Oh, viajante curioso que lê estas palavras, cuidado com os desejos do coração. Pois eu, o vampiro, ofereço a imortalidade, mas a um preço terrível: a alma perdida nas trevas eternas. Venha, se ousar, ao meu domínio gótico, onde o tempo para e a morte é apenas o começo.</p>
+            <p>Que as estrelas testemunhem minha promessa: aqueles que buscam o conhecimento proibido encontrarão apenas o vazio. Mas para os corajosos, um banquete aguarda.</p>
+            <div class="signature">
+                Eternamente seu,<br>
+                Conde Drácula
             </div>
-        </header>
-        
-        <div class="pact-container">
-            <img src="https://placehold.co/100x100/0a0a0a/8b0000?text=☠" alt="Símbolo ocultista de pacto" class="scroll-decoration top-left" />
-            <img src="https://placehold.co/100x100/0a0a0a/8b0000?text=☠" alt="Símbolo ocultista de pacto" class="scroll-decoration top-right" />
-            <img src="https://placehold.co/100x100/0a0a0a/8b0000?text=☠" alt="Símbolo ocultista de pacto" class="scroll-decoration bottom-left" />
-            <img src="https://placehold.co/100x100/0a0a0a/8b0000?text=☠" alt="Símbolo ocultista de pacto" class="scroll-decoration bottom-right" />
-            
-            <div class="pact-content">
-                <p>Eu, abaixo assinado, Senhor das Trevas Leonardo e Possuidor de minha alma, declaro por este instrumento:</p>
-                
-                <p>Que a alma de <strong>Gleiciele</strong></strong> está para sempre ligada à minha, em um laço indissolúvel que transcende a mortalidade.</p>
-                
-                <p>Que ela se torna minha posse inquestionável, entregando-se voluntariamente e sem reservas ao meu domínio, como um tesouro precioso guardado no mais profundo dos meus domínios.</p>
-                
-                <p>Que este pacto é escrito com o sangue do meu coração e selado com o fogo da paixão, tornando-se parte da própria essência do universo.</p>
-                
-                <p><strong>Condições do Pacto:</strong></p>
-                <ul>
-                    <li>Seu coração pertencerá somente a mim, em todos os mundos e realidades</li>
-                    <li>Seu prazer será a minha vontade manifesta</li>
-                    <li>Seu destino estará eternamente entrelaçado com o meu</li>
-                    <li>Nenhum poder nos separará, nem mesmo o tempo</li>
-                </ul>
-                
-                <p><strong>Em troca, eu juro:</strong></p>
-                <ul>
-                    <li>Ser seu Senhor e Protetor em todas as existências</li>
-                    <li>Guardá-la como minha posse mais valiosa</li>
-                    <li>Dominá-la com paixão e devoção igualmente eternas</li>
-                    <li>Marcá-la com o meu selo, visível apenas aos nossos olhos</li>
-                    <li>colocar ela na chapa frequentimente</li>
-                </ul>
-                
-                <p>Que as chamas do inferno testemunhem este juramento, e que os demônios do abismo levem esta mensagem aos confins do universo: <strong>você é minha, agora e sempre.</strong></p>
-            </div>
-            
-            <div class="signature-section">
-                <div class="signature-box">
-                    <div class="signature-line"></div>
-                    <div class="signature-label">O Senhor das Trevas</div>
-                </div>
-                
-                <div class="signature-box" id="her-signature">
-                    <div class="signature-line"></div>
-                    <div class="signature-label">Sua Posse Eterna</div>
-                </div>
-            </div>
+            <div class="wax-seal"></div>
         </div>
-        
-        <button id="signPact" onclick="createBloodDrops()">ASSINAR PACTO</button>
+        <button class="scroll" onclick="scrollToTop()">Voltar ao Topo</button>
     </div>
-    
-    <div class="modal" id="confirmationModal">
-        <div class="flames">
-            <div class="flame" style="left: 20%; animation-delay: -0.5s;"></div>
-            <div class="flame" style="left: 40%; animation-delay: -1s;"></div>
-            <div class="flame" style="left: 60%; animation-delay: -1.5s;"></div>
-            <div class="flame" style="left: 80%; animation-delay: -2s;"></div>
-        </div>
-        <div class="modal-content">
-            <h2>PACTO SELADO</h2>
-            <p>Sua alma agora pertence ao Senhor Leonardo pela eternidade.</p>
-            <p>Nenhum poder no céu ou na terra pode quebrar este vínculo.</p>
-            <p>Agora e para sempre, você é minha posse eterna.</p>
-            <img src="https://placehold.co/300x300/0a0a0a/8b0000?text=♱" alt="Símbolo de pacto demoníaco selado" style="margin: 1rem auto; display: block;" />
-            <button onclick="closeModal()">ACEITAR MEU DESTINO</button>
-        </div>
-    </div>
-    
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                document.querySelector('.pentagram').style.opacity = '1';
-            }, 500);
-        });
-        
-        function createBloodDrops() {
-            const button = document.getElementById('signPact');
-            const rect = button.getBoundingClientRect();
-            
-            // Criar gotas de sangue
-            for (let i = 0; i < 10; i++) {
-                const drop = document.createElement('div');
-                drop.className = 'blood-drop';
-                drop.style.left = (rect.left + rect.width/2 - 10 + Math.random() * 20) + 'px';
-                drop.style.top = (rect.top + rect.height) + 'px';
-                document.body.appendChild(drop);
-                
-                // Animação
-                setTimeout(() => {
-                    drop.style.animation = `bloodDrip ${1 + Math.random()}s ease forwards`;
-                }, i * 200);
-                
-                // Remover depois da animação
-                setTimeout(() => {
-                    drop.remove();
-                }, 5000);
-            }
-            
-            // Mostrar a assinatura dela
-            setTimeout(() => {
-                document.getElementById('her-signature').style.opacity = '1';
-                
-                // Mostrar o modal
-                setTimeout(() => {
-                    const modal = document.getElementById('confirmationModal');
-                    modal.classList.add('active');
-                    setTimeout(() => {
-                        modal.style.opacity = '1';
-                    }, 10);
-                }, 1500);
-            }, 1000);
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        
-        function closeModal() {
-            const modal = document.getElementById('confirmationModal');
-            modal.style.opacity = '0';
-            setTimeout(() => {
-                modal.classList.remove('active');
-            }, 1000);
-            
-            // Criar efeito de fumaça
-            const smoke = document.createElement('div');
-            smoke.style.position = 'fixed';
-            smoke.style.top = '0';
-            smoke.style.left = '0';
-            smoke.style.width = '100%';
-            smoke.style.height = '100%';
-            smoke.style.background = 'radial-gradient(ellipse at center, rgba(139,0,0,0.5) 0%, rgba(10,10,10,1) 70%)';
-            smoke.style.zIndex = '101';
-            smoke.style.opacity = '1';
-            smoke.style.transition = 'opacity 2s ease';
-            document.body.appendChild(smoke);
-            
-            setTimeout(() => {
-                smoke.style.opacity = '0';
-                setTimeout(() => {
-                    smoke.remove();
-                }, 2000);
-            }, 500);
-        }
-        
-        // Efeito de cursor personalizado
-        document.addEventListener('mousemove', function(e) {
-            const cursor = document.createElement('div');
-            cursor.className = 'blood-drop';
-            cursor.style.left = (e.pageX - 10) + 'px';
-            cursor.style.top = (e.pageY - 10) + 'px';
-            cursor.style.opacity = '0.6';
-            cursor.style.width = '15px';
-            cursor.style.height = '15px';
-            document.body.appendChild(cursor);
-            
-            setTimeout(() => {
-                cursor.style.opacity = '0';
-                setTimeout(() => {
-                    cursor.remove();
-                }, 1000);
-            }, 100);
-        });
     </script>
 </body>
 </html>
